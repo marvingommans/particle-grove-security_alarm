@@ -11,6 +11,7 @@ void setup() {
   pinMode(BUTTON, INPUT);
   pinMode(LED, OUTPUT);
   pinMode(BUZZER, OUTPUT);
+  Serial.begin(9600);
 }
 
 // loop() runs over and over again, as quickly as it can execute.
@@ -23,6 +24,8 @@ void loop() {
       buttonPressed ++;
       // turn of the trigger of the button click to avoid trigger in next loop until releasing
       toggleButton = false;
+       Serial.println("1");
+      delay (50);
     }
     // check if button is pressed more than 1 time or more
     if (buttonPressed > 1)
@@ -30,6 +33,7 @@ void loop() {
       // write outputvalues, set to high
       digitalWrite(LED, HIGH);
       digitalWrite(BUZZER, HIGH);   
+      Serial.println("beweging");
       delay (2000);
       buttonPressed = 0;
     }
@@ -43,6 +47,7 @@ void loop() {
     // button has been released, so trigger can be catched again in next loop
     toggleButton = true;
   }
+
        if (millis() - lastReset > 15000) {
            lastReset += 15000;
             buttonPressed = 0;
