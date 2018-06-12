@@ -53,6 +53,7 @@ void loop() {
        if (millis() - lastReset > 15000) {
            lastReset += 15000;
             buttonPressed = 0;
+            Serial.println("reset");
     }
 }
 
